@@ -87,6 +87,7 @@
             android:id="@+id/edit_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
             android:padding="20dp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -131,10 +132,21 @@
             android:layout_height="wrap_content"
             android:text="P"/>
         <RadioButton
-            android:id="@+id/radio_button_PP"
+            android:id="@+id/radio_button_38"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="PP"/>
+            android:text="38"/>
+        <RadioButton
+            android:id="@+id/radio_button_40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="40"/>
+        <RadioButton
+            android:id="@+id/radio_button_42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="42"/>
+
     </RadioGroup>
 
     <TextView

@@ -14,13 +14,17 @@ import android.widget.ImageView
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.core.view.isEmpty
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.belotrajeapp.R
 import com.example.belotrajeapp.service.constants.ProductConstants
+import com.example.belotrajeapp.service.model.ProductModel
 import com.example.belotrajeapp.viewModel.ProductFormViewModel
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.activity_product_form.*
 import kotlinx.android.synthetic.main.row_home.*
+import org.w3c.dom.Text
 import java.io.ByteArrayOutputStream
 
 class ProductFormActivity : AppCompatActivity(), View.OnClickListener {
@@ -44,9 +48,10 @@ class ProductFormActivity : AppCompatActivity(), View.OnClickListener {
         loadData()
     }
 
+
     private fun loadData() {
         val bundle = intent.extras
-        if (bundle != null){
+        if (bundle != null) {
             val id = bundle.getInt(ProductConstants.PRODUCTID)
             mProductId = bundle.getInt(ProductConstants.PRODUCTID)
             mViewModel.load(id)
@@ -55,15 +60,14 @@ class ProductFormActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         val id = v.id
-        if (id == R.id.button_save){
+        if (id == R.id.button_save ) {
 
             val name = edit_productName.text.toString()
             val description = edit_descriptionName.text.toString()
             val price = edit_price.text.toString()
             val size = checkSize()
             val category = checkCategory()
-            val img = imageViewToByte(findViewById<ImageView>(R.id.image_view_gallery)as ImageView)
-
+            val img = imageViewToByte(findViewById<ImageView>(R.id.image_view_gallery) as ImageView)
 
             mViewModel.save(
                 mProductId,
@@ -78,7 +82,7 @@ class ProductFormActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     //Function to listeners click events
-    private fun setListeners(){
+    private fun setListeners() {
         button_save.setOnClickListener(this)
         button_pick_img.setOnClickListener {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -94,11 +98,11 @@ class ProductFormActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-    private fun observe(){
+    private fun observe() {
         mViewModel.saveProduct.observe(this, Observer {
-            if(it){
+            if (it) {
                 Toast.makeText(applicationContext, "Salvo", Toast.LENGTH_SHORT).show()
-            }else{
+            } else {
                 Toast.makeText(applicationContext, "Falha", Toast.LENGTH_SHORT).show()
             }
             finish()
@@ -117,7 +121,7 @@ class ProductFormActivity : AppCompatActivity(), View.OnClickListener {
         radioGroup = findViewById(R.id.radio_group_category)
         val selectedRadioButtonId: Int = radioGroup.checkedRadioButtonId
         if (selectedRadioButtonId != -1) {
-          selectedRadioButton = findViewById(selectedRadioButtonId)
+            selectedRadioButton = findViewById(selectedRadioButtonId)
         }
         return selectedRadioButton.text.toString()
     }

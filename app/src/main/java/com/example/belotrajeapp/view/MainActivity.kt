@@ -17,9 +17,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener {
             startActivity(Intent(applicationContext, ProductFormActivity::class.java))
+        }
+        if (supportActionBar != null) {
+            supportActionBar!!.hide()
         }
 
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
@@ -28,9 +32,7 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(setOf(
-            R.id.navigation_home,
-            R.id.navigation_dashboard,
-            R.id.navigation_notifications
+            R.id.navigation_home
         ))
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)

@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.isEmpty
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -18,6 +20,7 @@ import com.example.belotrajeapp.service.constants.ProductConstants
 import com.example.belotrajeapp.view.adapter.ProductAdapter
 import com.example.belotrajeapp.view.listener.ProductListener
 import com.example.belotrajeapp.viewModel.HomeViewModel
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {
 
@@ -35,6 +38,7 @@ class HomeFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
         val recycler = root.findViewById<RecyclerView>(R.id.recycler_home)
+
 
         recycler.layoutManager = LinearLayoutManager(context)
 
